@@ -1,0 +1,3 @@
+Pacman projesini açmak için Visual Studio'da Pacman.sln dosyasını açın. Program başlayınca "BAŞLAT" tuşuna basın. Ok tuşlarıyla Pacman'e yön verin.
+
+ArizaTepit projesini açmak için ArizaTepit.sln dosyasını açın Visual Studio'da. Projeyi release modunda çalıştırıp çöktüğüne şahit olun. Debug modunda tekrar derleyip çalıştırın ve mesajları okuyun.
