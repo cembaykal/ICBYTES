@@ -1,0 +1,1 @@
+Open WAV files in "Files_WAV_Dosyalar" directory.

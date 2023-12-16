@@ -1,0 +1,1 @@
+Programdan "Files_WAV_Dosyalar" klasöründeki wav dosyaları açın.

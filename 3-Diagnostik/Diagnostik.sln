@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34301.259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Diagnostik", "Diagnostik\Diagnostik.vcxproj", "{E364AA53-CA7E-47B6-B319-0873F55C8DEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Debug|x64.ActiveCfg = Debug|x64
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Debug|x64.Build.0 = Debug|x64
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Debug|x86.ActiveCfg = Debug|Win32
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Debug|x86.Build.0 = Debug|Win32
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Release|x64.ActiveCfg = Release|x64
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Release|x64.Build.0 = Release|x64
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Release|x86.ActiveCfg = Release|Win32
+		{E364AA53-CA7E-47B6-B319-0873F55C8DEC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F825FE22-E059-4010-949F-39810F4D3979}
+	EndGlobalSection
+EndGlobal
