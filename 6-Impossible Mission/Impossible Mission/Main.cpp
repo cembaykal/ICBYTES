@@ -43,7 +43,7 @@ void MakeAgentRun(void *)
 	MagnifyX3(Corridor, TV);
 	DisplayImage(F1, TV);
 	PlaySound("Another_Visitor.wav", NULL, SND_SYNC);
-	PasteNon0(back, xcor, ycor, Corridor);
+	Paste(back, xcor, ycor, Corridor);
 	int i = 0;
 	while(true)
 	{
@@ -56,7 +56,7 @@ void MakeAgentRun(void *)
 #else
 		Sleep(60); //Release mode is fast so we delay more
 #endif
-		PasteNon0(back, xcor, ycor, Corridor);
+		Paste(back, xcor, ycor, Corridor);
 		if(i%7==4)PlaySound("Step.wav", NULL, SND_ASYNC);
 		xcor += step[i%7];
 		i++;
@@ -71,8 +71,8 @@ void ICGUI_main()
 {	
 	F1 = ICG_FrameThin(5, 140, 450, 430);
 	F2 = ICG_FrameThin(5, 5, 20, 20);
-	ICG_Button(400, 5, 160, 55, "Load Agent Run\n-----------------\n KOÞAN AJANI YÜKLE", LoadAgentRun);
-	ICG_TButton(580, 5, 160, 55, "Make Agent Run\n-----------------\n AJANI KOÞTUR", MakeAgentRun,NULL);
+	ICG_Button(400, 5, 160, 55, "Load Agent Run\n1 -----------------------------------\n KOÞAN AJANI YÜKLE", LoadAgentRun);
+	ICG_TButton(580, 5, 160, 55, "Make Agent Run\n2 -----------------------------------\n AJANI KOÞTUR", MakeAgentRun,NULL);
 	ReadImage("impossible_mission_elevator.bmp", Corridor);
 	DisplayImage(F1, Corridor);
 	ReadImage("Impossible_Mission Agent.bmp", Agent);
