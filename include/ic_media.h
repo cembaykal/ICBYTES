@@ -20,6 +20,10 @@ public:
 
 int CreateSound(ICBYTES& i, long long channels, long long sample_size, int type, int SamplesPerSec);
 bool CreateCompatibleDevice(ICDEVICE& d, int device_type, int device_id, ICBYTES& compatiblewith);
+int CreateDXCam(ICDEVICE& video_source, int device, HWND preview = NULL);
+int CreateDcttechRelay(ICDEVICE& r, int device);
+int CommandRelay(ICDEVICE& r, int onoff, const char* relay_number);
+
 bool WaveOut(ICDEVICE& d, ICBYTES& wave);
 unsigned WaveInputDevices(ICBYTES& i);
 unsigned WaveOutputDevices(ICBYTES& o);
@@ -28,9 +32,10 @@ void CloseDevice(ICDEVICE& d);
 int ReadWave(ICBYTES& i, const char* filepath);
 bool WaveIn(ICDEVICE& d, ICBYTES& wave);
 int GetVideoSourceList(ICBYTES& i);
-int CreateDXCam(ICDEVICE& video_source, int device, HWND preview = NULL);
+
 bool CaptureImage(ICDEVICE& video_source, ICBYTES& frame);
 void SystemInfo(ICBYTES& info);
+void PeripheralInfo(ICBYTES& info);
 bool CreateFileReader(ICDEVICE& file, const char* filepath);
 unsigned ReadIntoMatrix(ICDEVICE& file, ICBYTES& mat);
 

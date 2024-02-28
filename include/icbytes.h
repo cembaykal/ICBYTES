@@ -126,6 +126,14 @@ int CreateImage(ICBYTES& i, long long x, long long y, int type);
 
 int IdentityMatrix(ICBYTES& i, long long s, int type);
 
+int RandomUniform(ICBYTES& m, long long x, long long y, int z);
+int RandomUniform(ICBYTES& m, long long x, long long y);
+int RandomUniform(ICBYTES& m, long long x);
+
+int RandomNormal(double mean, double stdev, ICBYTES& m, long long x, long long y, int z);
+int RandomNormal(double mean, double stdev, ICBYTES& m, long long x, long long y);
+int RandomNormal(double mean, double stdev, ICBYTES& m, long long x);
+
 int IncreasingMatrix(ICBYTES& i, long long x, long long y, int z, int type);
 int IncreasingMatrix(ICBYTES& i, long long x, long long y, int type);
 int IncreasingMatrix(ICBYTES& i, long long x, int type);
@@ -156,7 +164,9 @@ void MaxY(ICBYTES& inp, ICBYTES& max);
 void MinY(ICBYTES& inp, ICBYTES& max);
 /*Sum of the elements of a matrix.
 MATRÝSTEKÝ TÜM ELEMANLARIN TOPLAMI.*/
-double sum(ICBYTES& inp);
+double Sum(ICBYTES& inp);
+void SumX(ICBYTES& inp, ICBYTES& sumx);
+void SumY(ICBYTES& inp, ICBYTES& sumY);
 
 int ICB_CreateVector(ICBYTES& v, int type);
 template <typename T> void ICB_push_back(ICBYTES& v, T i);
@@ -193,7 +203,7 @@ bool Paste(ICBYTES& i, int x, int y, ICBYTES& o);
 bool PasteNon0(ICBYTES& copy, int x, int y, ICBYTES& to);
 
 
-
+void print(ICBYTES& i);
 void DisplayMatrix(HWND hwnd, ICBYTES& i);
 void DisplayMatrix(ICBYTES& i);
 void ICB_SetString(HWND hwnd, ICBYTES& i);
