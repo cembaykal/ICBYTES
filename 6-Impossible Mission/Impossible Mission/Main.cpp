@@ -1,6 +1,5 @@
 #include<windows.h>
 #include"icb_gui.h"
-#include"ic_image.h"
 
 //#pragma comment (lib,"winmm.lib")
 
