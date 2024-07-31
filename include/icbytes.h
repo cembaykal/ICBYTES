@@ -209,7 +209,7 @@ void DisplayMatrix(ICBYTES& i);
 void ICB_SetString(HWND hwnd, ICBYTES& i);
 
 //________________________________________ FILE FUNCTIONS ___________________________________
-int ICB_ReadAll(const char* filepath, ICBYTES& i);
+int ReadAll(const char* filepath, ICBYTES& i);
 //___________________BASIC FILTERS___________________________________________________________
 bool FilterH(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
 bool FilterV(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
