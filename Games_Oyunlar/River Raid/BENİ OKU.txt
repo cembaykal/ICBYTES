@@ -1,0 +1,16 @@
+River Raid bir atari oyununun ICBYTES kütüphanesi kullanılarak yeniden kodlanmış bir versiyonudur.
+Oyunun amacı nehir üzerinde hareket eden uçağın düşmanları vurarak ve benzine dikkat ederek
+maksimum mesafeye ulaşmaya çalışmasıdır.
+
+Tuşlar:
+Sağ Ok Tuşu --> Uçağın sağa hareket etmesi
+Yukarı Ok Tuşu -->Uçağın hızlanması
+Aşağı Ok Tuşu -->Uçağın yavaşlaması
+Sol Ok Tuşu -->Uçağın sola hareket etmesi
+Space --> Ateş Etme
+
+
+---EMEĞİ GEÇENLER---
+->HALİL İBRAHİM KAYA
+->ETHEM CAN ERÖKSÜZ
+->ÜMİTCAN TUTAR 
