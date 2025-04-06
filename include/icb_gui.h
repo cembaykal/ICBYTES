@@ -150,5 +150,5 @@ int Print(int handle, ICBYTES& i);
 int PrintHex(int handle, ICBYTES& i, bool upper_case=false);
 void ICG_SetPrintWindow(HWND c);
 void ICG_SetPrintWindow(int handle);
-
+void DisplayVectorList(int H, ICBYTES& v);
 void PrintJPGMap(int handle, ICBYTES& map);

@@ -30,16 +30,30 @@ public:
     ICBYTES(std::initializer_list<std::initializer_list<double>> l);    
     ~ICBYTES();
     //___________________!!! INTERNAL USE ONLY! DO NOT USE!!! __________________
-    
-    unsigned long Gettype() { return type; }
+     unsigned long Gettype() { return type; }
     unsigned long Getbuflen() { return buflen; }
     long long GetMAT();
     unsigned long long Getpicb(){ return picb; }
     long long DataLen(long long datalen = -1);
+    //___________________FAST DATA ACCESS / Veriye Hýzlý Eriþim__________________
+    char** C_=NULL;
+    unsigned char** B_ = NULL;
+    short** S_ = NULL;
+    unsigned short** u_ = NULL;
+    int** I_ = NULL;
+    unsigned int** U_ = NULL;
+    float** F_ = NULL;
+    long long** L_ = NULL;
+    unsigned long long** O_ = NULL;
+    double** D_ = NULL;
+
     //___________________DATA ACCESS __________________
+   
+
     HBITMAP GetHBitmap();
    
     long long X();
+    long long X(long long y);
     long long Y();
     int Z();
     int W();
@@ -72,9 +86,9 @@ public:
     unsigned int& sU(long long x, long long y);
     unsigned int& sU(long long x, long long y, int z);
     //_________  INT(32) ACESS ________________________
-    long& I(long long x);
-    long& I(long long x, long long y);
-    long& I(long long x, long long y, int z);
+    int& I(long long x);
+    int& I(long long x, long long y);
+    int& I(long long x, long long y, int z);
     //_________  UNSIGNED LONG LONG(64) ACESS ____________
     unsigned long long& O(long long x);
     unsigned long long& O(long long x, long long y);
@@ -114,7 +128,7 @@ public:
     void operator /= (ICBYTES& i);
     
     bool dot(ICBYTES& A, ICBYTES& B);   //C.dot(A,B) --> C=A.B
-    //bool cross(ICBYTES& A, ICBYTES& B); //C.cross(A,B) --> C=AxB
+    bool cross(ICBYTES& A, ICBYTES& B); //C.cross(A,B) --> C=AxB
 };
 
 //________________________________________ FUNCTIONS___________________________________
@@ -142,6 +156,24 @@ int IncreasingMatrix(ICBYTES& i, long long x, long long y, int type);
 int IncreasingMatrix(ICBYTES& i, long long x, int type);
 
 int Magic(ICBYTES& m, int n);//Create Magic matrix//SÝHÝRLÝ MATRÝS YARATIR 
+
+//-------------------------------
+int CreateVectorList(ICBYTES& v, int type);
+void CreatePyramid(ICBYTES& V, long long Y, int type);
+bool IsVectorList(ICBYTES& i);
+template <typename T> void  push_back(ICBYTES& V, long long y, T i);
+void push_back(ICBYTES& V, std::initializer_list<int> l);
+void push_back(ICBYTES& V, std::initializer_list<double> l);
+void* GetVector(ICBYTES& V, int nth);
+void DeleteVector(ICBYTES& V, long long y);
+void EraseElem(ICBYTES& V, long long y, long long xstart, long long xend = 0);
+template<typename To> void Insert(ICBYTES& V, long long y, long long xstart, To val);
+bool JoinVectors(ICBYTES& v, long long head, long long tail);
+/*Inserts text string as a new line to vector List
+Karakter sicimi vektör listesine yeni bir satýr olarak ekler.*/
+bool InsertText2List(ICBYTES& L, const char* text, long long textlen);
+
+
 
 template <typename T> void Set(long long X, ICBYTES& i, T n);
 template <typename T> void Set(long long X, long long Y, ICBYTES& i, T n);
@@ -171,6 +203,10 @@ double Sum(ICBYTES& inp);
 void SumX(ICBYTES& inp, ICBYTES& sumx);
 void SumY(ICBYTES& inp, ICBYTES& sumY);
 
+void abs(ICBYTES& inp,ICBYTES &outp, unsigned type=-1);
+void square(ICBYTES& inp, ICBYTES& outp, unsigned type=-1);
+void sqrt(ICBYTES& inp, ICBYTES& outp, unsigned type);
+
 int ICB_CreateVector(ICBYTES& v, int type);
 template <typename T> void ICB_push_back(ICBYTES& v, T i);
 void ICB_pop_back(ICBYTES& v);
@@ -191,13 +227,14 @@ int ICB_GetContainerLen(int type);
 long long* SizeinArray(ICBYTES& i);// returns a long long[4] array (x,y,z,w)
 ICBYTES & size(ICBYTES& i);//returns a matrix of size (4,1) (x,y,z,w)
 int GetMatrixDims(ICBYTES& i);
-
+//Returns variable trpe: char, int, float, double etc.
 unsigned GetType(ICBYTES& i);
 int ICB_GetContainerType(ICBYTES& i);
 long long GetAddress(ICBYTES& i);
 void SetAddress(ICBYTES& i, long long address);
 bool IsFloating(ICBYTES& i);
 bool IsMatrix(ICBYTES& i);
+bool IsImageMatrix(ICBYTES& i);
 bool AreDimsEqual(ICBYTES& i, ICBYTES& j);
 bool AreEqualImage(ICBYTES& i, ICBYTES& j);
 bool FlipV(ICBYTES& source, ICBYTES& destination);
@@ -216,8 +253,10 @@ void ICB_SetString(HWND hwnd, ICBYTES& i);
 //________________________________________ FILE FUNCTIONS ___________________________________
 int ReadAll(const char* filepath, ICBYTES& i);
 //___________________BASIC FILTERS___________________________________________________________
-bool FilterH(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
-bool FilterV(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
+void Filter_H(ICBYTES& inp, ICBYTES& outp, ICBYTES& Filter, unsigned output_type = -1, bool out_is_image = false);
+void Filter_V(ICBYTES& inp, ICBYTES& outp, ICBYTES& Filter, unsigned output_type=-1, bool out_is_image = false);
+void RoundFloat2Byte(ICBYTES& inp, ICBYTES& outp, bool out_is_image = false);
+void RoundDouble2Byte(ICBYTES& inp, ICBYTES& outp, bool out_is_image = false);
 //________________________________________ DESCRIPTOR DEFINITIONS___________________________________
 
 //_______SIGN_________bit 1_________
@@ -271,8 +310,6 @@ bool FilterV(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
 #define ICB_UI24			13      //NOT IMPLEMENTED YET
 #define ICB_INT				16
 #define ICB_UINT			17
-#define ICB_LONG			16
-#define ICB_ULONG			17
 #define ICB_FLOAT			18
 #define ICB_I40 			20      //NOT IMPLEMENTED YET
 #define ICB_UI40			21      //NOT IMPLEMENTED YET
@@ -314,7 +351,7 @@ bool FilterV(ICBYTES& inp, ICBYTES& out, ICBYTES& filt, int output_type);
 #define ICB_GRAY             262147
 
 #define ICB_SPECIFIC         0X80000
-
+#define SCANM(M)    for(int y=1;y<=M.Y();y++){for(int x=1;x<=M.X();x++){
 //-------------------------------------------------------
 //-------------------- DIAGNOSTICS -----------------------------
 class ICBDIAG

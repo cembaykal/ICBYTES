@@ -77,6 +77,8 @@ bool ToRGB24(ICBYTES& source, ICBYTES& destination);
 bool ToRGB32(ICBYTES& source, ICBYTES& destination);
 bool Luma(ICBYTES& s, ICBYTES& d);
 int Quart(ICBYTES& source, ICBYTES& destination);
+bool DownSampleImg_X(ICBYTES& i, ICBYTES& o);
+bool DownSampleImg_Y(ICBYTES& i, ICBYTES& o);
 int MagnifyX3(ICBYTES& i, ICBYTES& o);
 void MarkPlus(ICBYTES& i, int x, int y, int size, int color);
 void MarkVert(ICBYTES& i, int x, int y, int size, int color);
@@ -99,7 +101,7 @@ bool FillTiltedEllipse(ICBYTES& img, ICBYTES& coor);
 void SetPixels(ICBYTES& i, int x, int y, unsigned clr, ICBYTES& o);
 void SetPixelsX2(ICBYTES& i, int x, int y, unsigned clr, ICBYTES& o);
 
-int LineGraph(ICBYTES& in, ICBYTES& img, int height, int color, int background=0);
+int* BarChart(ICBYTES& img, ICBYTES& data, int height, int barwidth = 14, unsigned backcolor = 0, unsigned barcolor = 0xff00);
 
 bool ReadImage(const char* filepath, ICBYTES& i);
 void MapJPG(ICBYTES& filedata, ICBYTES& result);
